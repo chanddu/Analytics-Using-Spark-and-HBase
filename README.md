@@ -106,6 +106,7 @@ val customerRDD = sTRDD.filter(line=>line(0).contains("Customer")).map(line=>lin
 sRDD.collect().foreach(println)
 customerRDD.collect().foreach(println)
 ```
+
 ![](https://github.com/chanddu/Analytics-Using-Spark-and-HBase/blob/master/Output%20Screen%20Shots/q6.png)
 
 * Give summary statistics for the duration column e.g. count, min, max, mean, stddev
@@ -115,4 +116,5 @@ val duration = sc.hbaseTable[(String)]("trip_data").select("duration").inColumnF
 val durationRDD = sql.createDataFrame(duration)
 durationRDD.describe("_1").show()
 ```
+
 ![](https://github.com/chanddu/Analytics-Using-Spark-and-HBase/blob/master/Output%20Screen%20Shots/q7.png)

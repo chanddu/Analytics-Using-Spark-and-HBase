@@ -102,7 +102,6 @@ AvderageDF.groupBy("_1").agg(avg(AvderageDF("_2"))).filter($"_1".contains("San F
 val sTRDD = sc.hbaseTable[(String)]("trip_data").select("subscriber_type").inColumnFamily("data")
 val sRDD = sTRDD.filter(line=>line(0).contains("Subscriber")).map(line=>line(0),1).reduceByKey((a,b)=>a+b)
 val customerRDD = sTRDD.filter(line=>line(0).contains("Customer")).map(line=>line(0),1).reduceByKey((a,b)=>a+b)
-
 sRDD.collect().foreach(println)
 customerRDD.collect().foreach(println)
 ```
